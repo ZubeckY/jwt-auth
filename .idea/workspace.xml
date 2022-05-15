@@ -1,11 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="a82662cd-22e3-4b37-aa2a-9f6eb3ff23df" name="Default Changelist" comment="" />
+    <list default="true" id="a82662cd-22e3-4b37-aa2a-9f6eb3ff23df" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/controller/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dtos/user-dto.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/token.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/router/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/auth-service.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/token-service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="29Cs9LryiaFe7XUZPLjjzMr5rU7" />
   <component name="ProjectViewState">
@@ -29,10 +60,48 @@
       <option name="presentableId" value="Default" />
       <updated>1652628251126</updated>
       <workItem from="1652628252576" duration="1299000" />
+      <workItem from="1652632897618" duration="4907000" />
     </task>
+    <task id="LOCAL-00001" summary="first-commit">
+      <created>1652632958064</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1652632958064</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="first-commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="first-commit" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="715" y="362" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1652637707058">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state x="715" y="362" key="#com.intellij.fileTypes.FileTypeChooser/0.40.1920.1040@0.40.1920.1040" timestamp="1652637707058" />
+    <state x="585" y="128" key="CommitChangelistDialog2" timestamp="1652632956122">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state x="585" y="128" key="CommitChangelistDialog2/0.40.1920.1040@0.40.1920.1040" timestamp="1652632956122" />
+    <state x="616" y="260" key="run.anything.popup" timestamp="1652634756295">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state x="616" y="260" key="run.anything.popup/0.40.1920.1040@0.40.1920.1040" timestamp="1652634756295" />
   </component>
 </project>

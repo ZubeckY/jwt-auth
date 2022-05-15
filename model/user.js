@@ -1,14 +1,10 @@
-const mogoose = require ('mongoose')
-const Schema = mongoose.Schema;
+const {Schema, model} = require ('mongoose')
 
-const userSchema = new Schema ({
-
-    login: {String, required: true,},
-    password: {String, required: true,},
-
+const UserSchema = new Schema ({
+    login:    {type: String, required: true, unique: true,},
+    password: {type: String, required: true,}
 }, {
-    timestamp: true,    // Добавление даты регистрации
+    timestamp: true,
 });
 
-const user = mongoose.model('user', userSchema);
-module.exports = user;
+module.exports = model ('User', UserSchema);
