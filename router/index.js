@@ -4,7 +4,6 @@ const Controller =  require ('../controller/index')
 const router = new Router ();
 
 router.get  ('/refresh', Controller.refresh);
-
 router.post ('/login', Controller.login);
 router.post ('/logout', Controller.logout);
 router.post ('/registration',
