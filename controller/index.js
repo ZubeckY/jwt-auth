@@ -46,6 +46,15 @@ class Controller {
         }
     }
 
+
+    async getAll (req, res, next) {
+        try {
+            const users = await authService.getAll();
+            return res.json(users);
+        } catch (e) {
+            next(e);
+        }
+    }
 }
 
 module.exports = new Controller();
