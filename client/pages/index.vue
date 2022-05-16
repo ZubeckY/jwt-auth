@@ -28,7 +28,6 @@ export default class Index extends Vue {
   getUsers () {
     this.$axios.get('http://localhost:5000/auth/get-all', {
       withCredentials: true,
-      credentials: 'include',
     })
     .then(responce => {
       this.data = responce.data
