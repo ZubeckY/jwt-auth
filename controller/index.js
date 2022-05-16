@@ -4,10 +4,6 @@ const {validationResult} = require('express-validator');
 class Controller {
     async registration(req, res, next) {
         try {
-            const errors = validationResult (req);
-            if (!errors.isEmpty()) {
-                return next ('Ошибка при валидации')
-            }
             const {login, password} = req.body;
             const userData = await authService.registration(login, password);
             res.cookie('refreshToken', userData.refreshToken, {maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true})

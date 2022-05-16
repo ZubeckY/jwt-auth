@@ -5,13 +5,14 @@ const express = require ('express');
 const mongoose = require ('mongoose');
 const cookieParser = require('cookie-parser')
 
-
 const app = express ();
-const authRouter = ('./router/index')
+const authRouter = require ('./router/index')
 
 express.json ()
 app.use (cors())
 app.use (cookieParser());
+app.use (express.json());
+app.use (express.urlencoded ({extended: true}));
 app.use ('/auth', authRouter);
 
 morgan (':method :url :status :res[content-length] - :response-time ms');
