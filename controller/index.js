@@ -6,7 +6,7 @@ class Controller {
         try {
             const {login, password} = req.body;
             const userData = await authService.registration(login, password);
-            res.cookie('refreshToken', userData.refreshToken, {maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true})
+            res.set ('Authorization', userData.refreshToken)
             return res.json(userData);
         } catch (e) {
             next(e);
@@ -17,7 +17,7 @@ class Controller {
         try {
             const {login, password} = req.body;
             const userData = await authService.login(login, password);
-            res.cookie('refreshToken', userData.refreshToken, {maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true})
+            res.set ('Authorization', userData.refreshToken)
             return res.json(userData);
         } catch (e) {
             next(e);
@@ -26,9 +26,9 @@ class Controller {
 
     async logout(req, res, next) {
         try {
-            const {refreshToken} = req.cookies;
+            const {refreshToken} = req.headers.authorization;
             const token = await authService.logout(refreshToken);
-            res.clearCookie('refreshToken');
+            res.removeHeader ('Authorization')
             return res.json(token);
         } catch (e) {
             next(e);
@@ -37,9 +37,9 @@ class Controller {
 
     async refresh(req, res, next) {
         try {
-            const {refreshToken} = req.cookies;
+            const {refreshToken} = req.headers.authorization;
             const userData = await authService.refresh(refreshToken);
-            res.cookie('refreshToken', userData.refreshToken, {maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true})
+            res.set ('Authorization', userData.refreshToken)
             return res.json(userData);
         } catch (e) {
             next(e);
