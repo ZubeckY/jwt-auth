@@ -6,10 +6,10 @@
             <v-form @submit.prevent>
               <div class="wrapper">
                 <h2 class="text-center mb-20">Регистрация</h2>
-                <v-text-field v-model="firstLogin" outlined @input="firstFormValidate"/>
-                <v-text-field v-model="firstPass"  outlined :type="'password'" @input="firstFormValidate"/>
+                <v-text-field v-model="firstLogin" @input="firstFormValidate" outlined/>
+                <v-text-field v-model="firstPass"  @input="firstFormValidate" outlined :type="'password'" />
                 <div class="ender">
-                  <v-btn outlined color="#1abc4d" class="ma-5" :disabled="submitModelFirst">Submit</v-btn>
+                  <v-btn outlined color="#1abc4d" class="ma-5" :disabled="submitModelFirst" @click="SubmitRegist">Submit</v-btn>
                   <v-btn outlined color="#1867c0" class="ma-5" @click="changerFields">Sign in</v-btn>
                 </div>
               </div>
@@ -21,11 +21,11 @@
             <v-form @submit.prevent>
               <div class="wrapper">
                 <h2 class="text-center mb-20">Вход</h2>
-                <v-text-field v-model="secondLogin" outlined/>
-                <v-text-field v-model="secondPass"  outlined :type="'password'"/>
+                <v-text-field v-model="secondLogin" @input="secondFormValidate" outlined/>
+                <v-text-field v-model="secondPass"  @input="secondFormValidate" outlined :type="'password'"/>
                 <div class="starter">
                   <v-btn outlined color="#1867c0" class="ma-5" @click="changerFields">Sign up</v-btn>
-                  <v-btn outlined color="#1abc4d" class="ma-5" :disabled="submitModelSecond">Submit</v-btn>
+                  <v-btn outlined color="#1abc4d" class="ma-5" :disabled="submitModelSecond" @click="SubmitLogin">Submit</v-btn>
                 </div>
               </div>
             </v-form>
@@ -33,6 +33,11 @@
         </v-col>
       </v-row>
 <!--    <div class="elem"></div>-->
+
+    <div>
+
+      {{responceData}}
+    </div>
   </v-container>
 </template>
 
@@ -55,6 +60,8 @@ export default class IndexPage extends Vue {
   submitModelFirst:boolean = true
   submitModelSecond:boolean = true
 
+  responceData:string = ''
+
   changerFields () {
     this.firstField = !this.firstField
     this.secondField = !this.secondField
@@ -63,7 +70,30 @@ export default class IndexPage extends Vue {
   firstFormValidate  () {(this.firstLogin != '' && this.firstPass != '') ? this.submitModelFirst = false : this.submitModelFirst = true}
   secondFormValidate () {(this.secondLogin != '' && this.secondPass != '') ? this.submitModelSecond = false : this.submitModelSecond = true}
 
-
+  SubmitRegist () {
+    this.$axios.post ('http://localhost:5000/auth/registration', {
+      login: this.firstLogin,
+      password: this.firstPass,
+    })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+  SubmitLogin  () {
+    this.$axios.post ('http://localhost:5000/auth/login', {
+      login: this.secondLogin,
+      password: this.secondPass,
+    })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
 
 }
 </script>
