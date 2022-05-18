@@ -43,7 +43,7 @@
 
 <script lang="ts">
 import {Component, Vue, Watch} from "vue-property-decorator"
-import SignForm from "~/components/sign-form.vue";
+import SignForm from "~/pages/sign-form.vue";
 @Component({
   components: {SignForm}
 })

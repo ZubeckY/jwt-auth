@@ -19,6 +19,14 @@ import {Component, Vue, Watch} from "vue-property-decorator"
 export default class Index extends Vue {
   private data:any = ''
 
+  titles:any=[
+    {
+      title: 'Вход'
+    },
+    {
+      title: 'Регистрация'
+    }
+  ]
 
   created () {
     if (!this.$restAuthData?.accessToken) {
@@ -28,17 +36,7 @@ export default class Index extends Vue {
   }
 
   getUsers () {
-
     this.$rest.users.list()
-    // this.$axios.get('http://localhost:5000/get-all', {
-    //   withCredentials: true,
-    // })
-    // .then(responce => {
-    //   this.data = responce.data
-    // })
-    // .catch(error=> {
-    //   console.log(error)
-    // })
   }
 }
 </script>
