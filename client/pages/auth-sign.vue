@@ -62,8 +62,6 @@ export default class AuthSign extends Vue {
 
   responceData:string = ''
 
-  private $cookies:any
-
   changerFields () {
     this.firstField = !this.firstField
     this.secondField = !this.secondField
@@ -79,29 +77,19 @@ export default class AuthSign extends Vue {
     })
     .then((response) => {
       this.responceData = response.data.refreshToken
-      this.Cookier ()
+      this.Redirect ()
     })
     .catch(function (error) {
       console.log(error);
     });
   }
 
-  SubmitLogin  () {
-    this.$axios.post ('http://localhost:5000/auth/login', {
-      login: this.secondLogin,
-      password: this.secondPass,
-    })
-    .then((response) => {
-      this.responceData = response.data.refreshToken
-      this.Cookier ()
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+  async SubmitLogin  () {
+    let data = await this.$rest.getAuth(this.secondLogin, this.secondPass)
+    this.Redirect ()
   }
 
-  Cookier () {
-    this.$cookies.set('refreshToken', this.responceData, {maxAge: 30 * 24 * 60 * 60})
+  Redirect () {
     this.$router.push('/')
   }
 

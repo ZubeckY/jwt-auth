@@ -14,7 +14,7 @@ app.use (cors({origin: [`http://localhost:3000`, `https://localhost:5000`], cred
 app.use (cookieParser());
 app.use (express.json());
 app.use (express.urlencoded ({extended: true}));
-app.use ('/auth', authRouter);
+app.use (authRouter);
 
 morgan (':method :url :status :res[content-length] - :response-time ms');
 app.listen(process.env.port || 5000, (error) => error ? console.log (error) : logStatus ('Port'));

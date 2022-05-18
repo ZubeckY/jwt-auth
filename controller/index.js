@@ -2,11 +2,20 @@ const authService = require('../service/auth-service');
 const {validationResult} = require('express-validator');
 
 class Controller {
+
+    index (req, res, next) {
+        try {
+            return next (res.status (200))
+        } catch (e) {
+            return next (res.status (401))
+        }
+    }
+
     async registration(req, res, next) {
         try {
             const {login, password} = req.body;
             const userData = await authService.registration(login, password);
-            res.set ('Authorization', userData.refreshToken)
+            res.setHeader ('Authorization', userData.refreshToken)
             return res.json(userData);
         } catch (e) {
             next(e);
@@ -17,7 +26,7 @@ class Controller {
         try {
             const {login, password} = req.body;
             const userData = await authService.login(login, password);
-            res.set ('Authorization', userData.refreshToken)
+            res.setHeader ('Authorization', userData.refreshToken)
             return res.json(userData);
         } catch (e) {
             next(e);
@@ -39,7 +48,7 @@ class Controller {
         try {
             const {refreshToken} = req.headers.authorization;
             const userData = await authService.refresh(refreshToken);
-            res.set ('Authorization', userData.refreshToken)
+            res.setHeader ('Authorization', userData.refreshToken)
             return res.json(userData);
         } catch (e) {
             next(e);
