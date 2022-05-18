@@ -3,11 +3,12 @@
     <v-form @submit.prevent>
       <div class="wrapper">
         <h2 class="text-center mb-20">title</h2>
-        <v-text-field v-model="Login" placeholder="Login" @input="FormValidate" outlined/>
+        <v-text-field v-model="Login" placeholder="Login" @input="FormValidate" outlined :rules="rules"/>
 
         <v-text-field v-model="Pass" placeholder="Password" @input="FormValidate" outlined
           :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'" :type="show1 ? 'text' : 'password'"
-          @click:append="show1 = !show1"
+          @click:append="show1 = !show1" :rules="rules"
+
         ></v-text-field>
         <div class="ender">
           <v-btn outlined color="#1abc4d" class="ma-5" :disabled="submitModel" @click="Submit">Submit</v-btn>
@@ -33,7 +34,11 @@ export default class SignForm extends Vue {
   // title
   //signToggle
 
-  show1:boolean=false
+  show1:boolean = false
+  rules:any = [
+    value => !!value || 'Required.',
+    value => (value && value.length >= 3) || 'Min 3 characters',
+  ]
 
   FormValidate () {
 
@@ -46,6 +51,8 @@ export default class SignForm extends Vue {
   changerFields () {
 
   }
+
+
 }
 
 </script>
