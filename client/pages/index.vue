@@ -19,15 +19,6 @@ import {Component, Vue, Watch} from "vue-property-decorator"
 export default class Index extends Vue {
   private data:any = ''
 
-  titles:any=[
-    {
-      title: 'Вход'
-    },
-    {
-      title: 'Регистрация'
-    }
-  ]
-
   created () {
     if (!this.$restAuthData?.accessToken) {
       console.log(this.$restAuthData)
