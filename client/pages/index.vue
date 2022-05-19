@@ -4,13 +4,10 @@
       <v-btn @click="getUsers"> Получить Всех Пользователей </v-btn>
     </div>
     <div v-else v-for="el in data">
-      <div>
-        <div>id : {{el._id}}</div>
-        <div>Login : {{el.login}}</div>
-        <div>Data : {{el.createdAt}}</div>
-      </div>
+      <div>id : {{el._id}}</div>
+      <div>Login : {{el.login}}</div>
+      <div>Data : {{el.createdAt}}</div>
     </div>
-
   </div>
 </template>
 <script lang="ts">

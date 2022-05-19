@@ -1,24 +1,86 @@
 <template>
   <div class="wrapper">
-    <v-container>
-      <v-card class="form-card form-wrapper">
-        <auth-login
-          @Submit="Submit"
-        />
-      </v-card>
+    <v-container class="auth-aligner">
+      <auth-login v-if="AuthModel"
+        :SubmitLogin="SubmitLogin"
+        :Registration="Registration"
+      />
+      <div v-else>
+        safasfsafa
+      </div>
     </v-container>
   </div>
 </template>
 <script lang="ts">
-import {Component, Vue, Watch} from "vue-property-decorator"
+import {Component, Vue} from "vue-property-decorator"
 @Component
 export default class AuthSign extends Vue {
-  login:string = ''
-  password:string = ''
-  async Submit (submit) {
-    if (submit.formType == '')
-    let data = await this.$rest.getAuth(this.login, this.password)
+
+  AgencyModel:any = {
+    //При регистрации
+    IdAgency: '',             // id Агенства
+    nameAgency: '',           // название агенства
+    fNameDirector: '',        // ф директора
+    sNameDirector: '',        // и директора
+    pNameDirector: '',        // о директора
+    phoneAgency: '',          // телефон агентства
+    emailAgency: '',          // емаил агентства
+    commentAgency: '',        // комментарий
+    contactFaceAgencyID: '',  // ID Сотрудника для связи (привязывется к организации, т.к. поле может быть не постоянным, сделал так)
+    // Другая информация которая будет храниться
+      contactFaceAgencyF: '',   // ф сотрудника агентства для связи
+      contactFaceAgencyS: '',   // и сотрудника агентства для связи
+      contactFaceAgencyP: '',   // о сотрудника агентства для связи
+      contactFaceAgencyN: '',   // телефон сотрудника для связи
+    clientBaseIDs: '',        // ID-шники клиентов, привязанных к конкретному Агенству
+  }
+
+  // Поля контакта, которые хранятся в нашей табличке:
+
+  ContactTable:any = {
+    fName: '',                    // ф
+    sName: '',                    // и
+    pName: '',                    // о
+    phone: '',                    // телефон
+    IdAgency: '',                 // ID агентства, к которому привязан клиент
+    bindingStatus: 'свободен',    // статус (свободен, не проверенное агентство, застройщик или агентство)
+    IdRealtor: '',                // id риэлтора
+    // Другая информация которая будет храниться
+      fNameRealtor: '',             // ф риэлтора
+      sNameRealtor: '',             // и риэлтора
+      pNameRealtor: '',             // о риэлтора
+      phoneRealtor: '',             // телефон риэлтора
+  }
+
+
+  AuthModel:boolean=true
+
+  // По каким критериям проверяется пользователь (по всем агентствам)
+  ClientCheckTable:any = {
+  // фамилия,
+  // имя,
+  // отчество,
+  // телефон (обязательное)
+
+  // Если клиент не найден или свободный, выводятся две кнопки:
+  // «Закрепить клиента и зарегистрироваться как агентство»
+  // или
+  // «Авторизоваться и закрепить клиента»
+
+  // При нажатии «Закрепить клиента и зарегистрироваться как агентство»
+  // Статус у агентства ставится «не проверено».
+
+  // При нажатии «Авторизоваться и закрепить клиента»
+  // Выводится форма авторизации — логин и пароль агентства.
+}
+  async SubmitLogin (submitModel:any) {
+    let {login, password} = submitModel
+    let data = await this.$rest.getAuth(login, password)
     this.Redirect ()
+  }
+  Registration () {
+    this.AuthModel = !this.AuthModel
+    console.log(this.AuthModel)
   }
   Redirect () {
     this.$router.push('/')
@@ -26,22 +88,10 @@ export default class AuthSign extends Vue {
 }
 </script>
 <style>
-.container   { max-width: 1000px !important;}
 .wrapper {
-  width: 100%; height: 100vh;
-  background: url("./static/andreas-gabler-XEW_Wd4240c-unsplash.png") center no-repeat;
-  background-size: 100%; filter: contrast(175%) brightness(85%) saturate(85%);
+  background: url("https://upload.wikimedia.org/wikipedia/commons/1/15/Mt._Everest_from_Gokyo_Ri_November_5%2C_2012.jpg") center no-repeat;
+  width: 100%; height: 100vh; background-size: 100%;
 }
-.form-header {
-  margin: 30px 0 0 0; text-align: center;
-}
-.form-wrapper {
-  filter: unset; padding: 20px;
-}
-.form-card {
-  display: flex; flex-direction: column; margin: 25% 0;
-}
-.form-container {
-  display: flex; width: 80%; height: 400px; align-self: center; flex-direction: column;
-}
+.container    { max-width: 800px !important;}
+.auth-aligner {display: flex; height: 100vh; align-items: center; justify-content: center;}
 </style>
