@@ -19,7 +19,7 @@ export default class Index extends Vue {
   created () {
     if (!this.$restAuthData?.accessToken) {
       console.log(this.$restAuthData)
-      this.$router.push('/auth-sign')
+      this.$router.push('/auth-login')
     }
   }
 

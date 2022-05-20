@@ -1,39 +1,14 @@
 <template>
   <div class="wrapper">
     <v-container class="auth-aligner">
-      <auth-login v-if="AuthModel"
-        :SubmitLogin="SubmitLogin"
-        :Registration="Registration"
-      />
-      <div v-else>
-        safasfsafa
-      </div>
+      <auth-regist/>
     </v-container>
   </div>
 </template>
 <script lang="ts">
 import {Component, Vue} from "vue-property-decorator"
 @Component
-export default class AuthSign extends Vue {
-
-  AgencyModel:any = {
-    //При регистрации
-    IdAgency: '',             // id Агенства
-    nameAgency: '',           // название агенства
-    fNameDirector: '',        // ф директора
-    sNameDirector: '',        // и директора
-    pNameDirector: '',        // о директора
-    phoneAgency: '',          // телефон агентства
-    emailAgency: '',          // емаил агентства
-    commentAgency: '',        // комментарий
-    contactFaceAgencyID: '',  // ID Сотрудника для связи (привязывется к организации, т.к. поле может быть не постоянным, сделал так)
-    // Другая информация которая будет храниться
-      contactFaceAgencyF: '',   // ф сотрудника агентства для связи
-      contactFaceAgencyS: '',   // и сотрудника агентства для связи
-      contactFaceAgencyP: '',   // о сотрудника агентства для связи
-      contactFaceAgencyN: '',   // телефон сотрудника для связи
-    clientBaseIDs: '',        // ID-шники клиентов, привязанных к конкретному Агенству
-  }
+export default class AuthRegistPage extends Vue {
 
   // Поля контакта, которые хранятся в нашей табличке:
 
@@ -51,9 +26,6 @@ export default class AuthSign extends Vue {
       pNameRealtor: '',             // о риэлтора
       phoneRealtor: '',             // телефон риэлтора
   }
-
-
-  AuthModel:boolean=true
 
   // По каким критериям проверяется пользователь (по всем агентствам)
   ClientCheckTable:any = {
@@ -73,15 +45,6 @@ export default class AuthSign extends Vue {
   // При нажатии «Авторизоваться и закрепить клиента»
   // Выводится форма авторизации — логин и пароль агентства.
 }
-  async SubmitLogin (submitModel:any) {
-    let {login, password} = submitModel
-    let data = await this.$rest.getAuth(login, password)
-    this.Redirect ()
-  }
-  Registration () {
-    this.AuthModel = !this.AuthModel
-    console.log(this.AuthModel)
-  }
   Redirect () {
     this.$router.push('/')
   }

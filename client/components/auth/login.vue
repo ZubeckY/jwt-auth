@@ -2,11 +2,11 @@
   <v-card class="form-card form-wrapper">
     <v-form @submit.prevent class="form-container">
       <header class="form-header">
-        <h2>Авторизация</h2>
+        <h2>Вход</h2>
       </header>
       <div>
         <v-text-field
-          label="Логин"
+          label="Логин (Телефон)"
           v-model="submitModel.login"
           :rules="[rules.required]"
         />
@@ -21,11 +21,11 @@
       </div>
       <v-row style="margin-top: 20px">
         <v-col>
-          <v-btn text @click="SubmitLogin">Войти</v-btn>
+          <span>Нет аккаунта?</span>
+          <v-btn text href="/auth-regist"> Регистрация</v-btn>
         </v-col>
         <v-col class="col-auto">
-          <span>У вас нет аккаунта?</span>
-          <v-btn text @click="$emit('Registration')"> Зарегестрироваться</v-btn>
+          <v-btn text @click="SubmitLogin">Войти</v-btn>
         </v-col>
       </v-row>
     </v-form>
@@ -45,13 +45,18 @@ export default class Login extends Vue {
     required: (value:any) => !!value || 'Обязательное поле.',
     min: (value:any) => value.length >= 8 || 'Минимум 8 символов',
   }
-  SubmitLogin () {
-    this.$emit('SubmitLogin', this.submitModel)
+  async SubmitLogin () {
+    let {login, password} = this.submitModel
+    let data = await this.$rest.getAuth(login, password)
+    this.Redirect ()
+  }
+  Redirect () {
+    this.$router.push('/')
   }
 }
 </script>
 <style>
-  .form-card   {display: flex; padding: 20px; width: 700px; height: 310px; flex-direction: column; opacity: .85 !important;}
-  .form-header { margin: 30px 0 0 0; text-align: center;}
+  .form-card      {display: flex; padding: 20px; width: 800px; height: 310px; flex-direction: column; opacity: .85 !important;}
+  .form-header    {margin: 30px 0 0 0; text-align: center;}
   .form-container {display: flex; width: 80%; align-self: center; flex-direction: column;}
 </style>
