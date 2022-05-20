@@ -7,7 +7,6 @@
       <div>id : {{el._id}}</div>
       <div>Login : {{el.login}}</div>
       <div>Data : {{el.createdAt}}</div>
-<!--      Проверка -->
     </div>
   </div>
 </template>

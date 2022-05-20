@@ -11,7 +11,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a82662cd-22e3-4b37-aa2a-9f6eb3ff23df" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/pages/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/index.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -72,7 +71,7 @@
       <workItem from="1652794783533" duration="598000" />
       <workItem from="1652981445165" duration="8594000" />
       <workItem from="1652991898360" duration="501000" />
-      <workItem from="1653074118992" duration="269000" />
+      <workItem from="1653074118992" duration="333000" />
     </task>
     <task id="LOCAL-00001" summary="first-commit">
       <created>1652632958064</created>
@@ -109,7 +108,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652992071042</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Проверка">
+      <created>1653074413059</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1653074413059</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -133,7 +139,8 @@
     <MESSAGE value="third commit" />
     <MESSAGE value="4th commit" />
     <MESSAGE value="рефакторКоммит" />
-    <option name="LAST_COMMIT_MESSAGE" value="рефакторКоммит" />
+    <MESSAGE value="Проверка" />
+    <option name="LAST_COMMIT_MESSAGE" value="Проверка" />
   </component>
   <component name="WindowStateProjectService">
     <state x="586" y="238" key="#Inspections" timestamp="1652984343456">
@@ -144,10 +151,10 @@
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state x="715" y="362" key="#com.intellij.fileTypes.FileTypeChooser/0.40.1920.1040@0.40.1920.1040" timestamp="1652637707058" />
-    <state x="585" y="128" key="CommitChangelistDialog2" timestamp="1652992069407">
+    <state x="585" y="128" width="1119" height="863" key="CommitChangelistDialog2" timestamp="1653074411555">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
-    <state x="585" y="128" key="CommitChangelistDialog2/0.40.1920.1040@0.40.1920.1040" timestamp="1652992069407" />
+    <state x="585" y="128" width="1119" height="863" key="CommitChangelistDialog2/0.40.1920.1040@0.40.1920.1040" timestamp="1653074411555" />
     <state width="1899" height="235" key="GridCell.Tab.0.bottom" timestamp="1652992402751">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
@@ -164,10 +171,10 @@
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state width="1899" height="235" key="GridCell.Tab.0.right/0.40.1920.1040@0.40.1920.1040" timestamp="1652992402751" />
-    <state x="552" y="293" key="Vcs.Push.Dialog.v2" timestamp="1652992081983">
+    <state x="552" y="293" key="Vcs.Push.Dialog.v2" timestamp="1653074432191">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
-    <state x="552" y="293" key="Vcs.Push.Dialog.v2/0.40.1920.1040@0.40.1920.1040" timestamp="1652992081983" />
+    <state x="552" y="293" key="Vcs.Push.Dialog.v2/0.40.1920.1040@0.40.1920.1040" timestamp="1653074432191" />
     <state x="567" y="170" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1652642595047">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
