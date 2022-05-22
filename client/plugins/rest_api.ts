@@ -1,8 +1,6 @@
 import Vue from 'vue'
 import axios from 'axios'
 
-
-
 declare module 'vue/types/vue' {
   interface Vue {
     $restAuthData: AuthData
@@ -35,22 +33,25 @@ class Rest {
 
   private static hostname = '/api'
   private static getTokenUrl = '/api/auth/login/'
+  private static regTokenUrl = '/api/auth/registration/'
 
   public token = ''
 
-  public getAuth = async (login: any, password: any) => {
+  public getAuth = async (data:any) => {
     // : AuthData | false
-    const data = {
-      login,
-      password
-    }
     const response = await axios.post(Rest.getTokenUrl, data)
     // .then(response => (Vue.prototype.$restAuthData = response.data))
-
     Vue.prototype.$restAuthData = response.data
-
     this.token = response.data.accessToken
+    return response.data
+  }
 
+  public regAuth = async (data:any) => {
+    // : AuthData | false
+    const response = await axios.post(Rest.regTokenUrl, data)
+    // .then(response => (Vue.prototype.$restAuthData = response.data))
+    Vue.prototype.$restAuthData = response.data
+    this.token = response.data.accessToken
     return response.data
   }
 
@@ -61,8 +62,6 @@ class Rest {
     const response = await axios.post(Rest.hostname + url, data, {
       headers: { Authorization: `${this.token}` },
     })
-
-
     return response.data
   }
 

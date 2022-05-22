@@ -7,7 +7,7 @@
       <div>
         <v-text-field
           label="Логин (Телефон)"
-          v-model="submitModel.login"
+          v-model="submitModel.phone"
           :rules="[rules.required]"
         />
         <v-text-field
@@ -37,7 +37,7 @@ import {Component, Vue} from "vue-property-decorator";
 @Component
 export default class Login extends Vue {
   submitModel:any = {
-    login: '',
+    phone: '',
     password: '',
   }
   showPass:boolean = false
@@ -46,8 +46,7 @@ export default class Login extends Vue {
     min: (value:any) => value.length >= 8 || 'Минимум 8 символов',
   }
   async SubmitLogin () {
-    let {login, password} = this.submitModel
-    let data = await this.$rest.getAuth(login, password)
+    let data = await this.$rest.getAuth(this.submitModel)
     this.Redirect ()
   }
   Redirect () {

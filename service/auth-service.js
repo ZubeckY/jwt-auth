@@ -4,15 +4,24 @@ const tokenService = require('./token-service');
 const UserModel = require('../model/user');
 
 class authService {
-    async registration (login, password) {
-        const candidate = await UserModel.findOne ({login})
-        if (candidate) {
-            throw new Error (`Пользователь уже существует`)
+    async registration (data) {
+        let {name, director, phone, email, comment, contactname, contactphone, password} = data
+
+        const Name = await UserModel.findOne ({name})
+        if (Name) {
+            throw new Error (`Организация уже зарегестрирована`)
+        }
+        const Phone = await UserModel.findOne ({phone})
+        if (Phone) {
+            throw new Error (`Данный Телефон уже привязан к другой организации`)
+        }
+        const Email = await UserModel.findOne ({email})
+        if (Email) {
+            throw new Error (`Данный Email уже привязан к другой организации`)
         }
         const hashPassword = await bcrypt.hash (password, 3);
 
-        const user = await UserModel.create ({login, password: hashPassword})
-
+        const user = await UserModel.create ({name, director, phone, email, comment, contactname, contactphone, password: hashPassword})
         const userDto = new UserDto (user);
         const tokens = tokenService.generateTokens ({...userDto});
         await tokenService.saveToken (userDto.id, tokens.refreshToken);
@@ -21,8 +30,10 @@ class authService {
     }
 
 
-    async login (login, password) {
-        const user = await UserModel.findOne ({login})
+    async login (data) {
+
+        let {phone, password} = data
+        const user = await UserModel.findOne ({phone})
         if (!user) {
             throw new Error ('Пользователь не найден')
         }

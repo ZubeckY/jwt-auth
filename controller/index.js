@@ -13,8 +13,8 @@ class Controller {
 
     async registration(req, res, next) {
         try {
-            const {login, password} = req.body;
-            const userData = await authService.registration(login, password);
+            const data = req.body;
+            const userData = await authService.registration(data);
             res.setHeader ('Authorization', userData.refreshToken)
             return res.json(userData);
         } catch (e) {
@@ -24,8 +24,8 @@ class Controller {
 
     async login(req, res, next) {
         try {
-            const {login, password} = req.body;
-            const userData = await authService.login(login, password);
+            const data = req.body;
+            const userData = await authService.login(data);
             res.setHeader ('Authorization', userData.refreshToken)
             return res.json(userData);
         } catch (e) {

@@ -22,71 +22,58 @@
       <v-window-item :value="1">
         <v-card-text>
           <v-text-field
-            label="Организация"
-            v-model="AgencyModel.nameAgency"
+            label="Организация *"
+            v-model="Agency.name"
+          ></v-text-field>
+          <v-text-field
+            label="ФИО Руководителя *"
+            v-model="Agency.director"
           ></v-text-field>
           <span class="text-caption grey--text text--darken-1">
-            Введите название вашей организации
+            Введите название Вашей организации и ФИО руководителя
           </span>
         </v-card-text>
       </v-window-item>
 
-      <v-window-item :value="2">
-        <v-card-text>
-          <v-text-field
-            label="Фамилия"
-            v-model="AgencyModel.fNameDirector"
-          ></v-text-field>
-          <v-text-field
-            label="Имя"
-            v-model="AgencyModel.sNameDirector"
-          ></v-text-field>
-          <v-text-field
-            label="Отчество"
-            v-model="AgencyModel.pNameDirector"
-          ></v-text-field>
-          <span class="text-caption grey--text text--darken-1">
-            Введите ФИО Руководителя
-          </span>
-        </v-card-text>
-      </v-window-item>
-
-        <v-window-item :value="3">
+        <v-window-item :value="2">
           <v-card-text>
             <v-text-field
-              label="Email"
-              v-model="AgencyModel.emailAgency"
+              label="Email *"
+              v-model="Agency.email"
             ></v-text-field>
             <v-text-field
-              label="Телефон"
-              v-model="AgencyModel.phoneAgency"
+              label="Телефон *"
+              v-model="Agency.phone"
+            ></v-text-field>
+            <v-text-field
+              label="Комментарий"
+              v-model="Agency.comment"
             ></v-text-field>
             <span class="text-caption grey--text text--darken-1">
-            Введите контактные данные Вашей организации
+            Введите контактные данные организации
           </span>
           </v-card-text>
         </v-window-item>
 
-      <v-window-item :value="4">
+      <v-window-item :value="3">
         <v-card-text>
           <v-text-field
             label="ФИО сотрудника"
-            v-model="AgencyModel.contactFaceAgencyFIO"
+            v-model="Agency.contactname"
           ></v-text-field>
           <v-text-field
             label="Телефон"
-            v-model="AgencyModel.contactFaceAgencyPhone"
+            v-model="Agency.contactphone"
           ></v-text-field>
           <span class="text-caption grey--text text--darken-1">
-            Введите данные Вашего контактного лица
+            Введите данные контактного лица
           </span>
         </v-card-text>
       </v-window-item>
-
-      <v-window-item :value="5">
+      <v-window-item :value="4">
         <v-card-text>
           <v-text-field
-            label="Пароль"
+            label="Пароль *"
             v-model="password"
             :rules="[rules.required, rules.min]"
             :type="showPass1 ? 'text' : 'password'"
@@ -94,7 +81,7 @@
             @click:append="showPass1 = !showPass1"
           ></v-text-field>
           <v-text-field
-            label="Повторите пароль"
+            label="Повторите пароль *"
             v-model="passwordRepeat"
             :rules="[rules.required, rules.min]"
             :type="showPass2 ? 'text' : 'password'"
@@ -102,12 +89,12 @@
             @click:append="showPass2 = !showPass2"
           ></v-text-field>
           <span class="text-caption grey--text text--darken-1">
-            Пожалуйста, введите ваш пароль
+            Пожалуйста, введите пароль
           </span>
         </v-card-text>
       </v-window-item>
 
-      <v-window-item :value="6">
+      <v-window-item :value="5">
         <div class="pa-4 text-center">
           <v-img
             class="mb-4"
@@ -133,17 +120,17 @@
             @click="step--"
             :href="step === 1 ? '/auth-login' : ''"
           >
-            {{ (step === 1) ? "Войти" : (step === 6) ? '' : 'Назад'}}
+            {{ (step === 1) ? "Войти" : (step === 5) ? '' : 'Назад'}}
           </v-btn>
         </v-col>
         <v-col class="col-auto">
           <v-btn
-            :disabled="step === 6"
+            :disabled="step === 5"
             depressed
             text
             @click="Checker"
           >
-            {{ step === 5 ? "Регистрация" : (step === 6) ? '' : 'Далее'}}
+            {{ step === 4 ? "Регистрация" : (step === 5) ? '' : 'Далее'}}
           </v-btn>
         </v-col>
       </v-row>
@@ -162,27 +149,8 @@ export default class AuthRegist extends Vue {
   password:string = ''
   passwordRepeat:string = ''
 
-  AgencyModel:any = {
-    //При регистрации
-    nameAgency: '',             // название агенства
-
-    fNameDirector: '',          // ф директора
-    sNameDirector: '',          // и директора
-    pNameDirector: '',          // о директора
-
-    phoneAgency: '',            // телефон агентства
-    emailAgency: '',            // емаил агентства
-
-    commentAgency: '',          // комментарий
-
-    contactFaceAgencyID: '',    // ID Сотрудника для связи (привязывется к организации, т.к. поле может быть не постоянным, сделал так)
-    // Другая информация которая будет храниться
-    contactFaceAgencyFIO: '',   // ф сотрудника агентства для связи
-    contactFaceAgencyPhone: '', // о сотрудника агентства для связи
-
-    passwordAgency: '',         // пароль
-
-    clientBaseIDs: '',          // ID-шники клиентов, привязанных к конкретному Агенству
+  Agency:any = {
+    name: '', director: '', phone: '', email: '', comment: '', contactname: '', contactphone: '', password: '',
   }
 
   rules:any = {
@@ -190,19 +158,29 @@ export default class AuthRegist extends Vue {
     min: (value:any) => value.length >= 8 || 'Минимум 8 символов',
   }
 
-  Checker () {
+  async Checker () {
     this.step++
-    if (this.step == 6) {
-      console.log(this.AgencyModel)
+    let login:any = ''
+    if (this.step == 5) {
+      this.Agency.password = this.password
+      this.Agency.name = this.Agency.name.toLowerCase()
+      this.Agency.director = this.Agency.director.toLowerCase()
+      this.Agency.email = this.Agency.email.toLowerCase()
+      this.Agency.comment = this.Agency.comment.toLowerCase()
+      this.Agency.contactname = this.Agency.contactname.toLowerCase()
+      let data = await this.$rest.regAuth (this.Agency)
+      this.Redirect ()
     }
+  }
+
+  Redirect () {
+    this.$router.push('/')
   }
 
   get currentTitle () {
     switch (this.step) {
       case 1:
         return 'Название организации'
-      case 2:
-        return 'Руководитель'
       case 3:
         return 'Контакты'
       case 4:
