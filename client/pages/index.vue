@@ -1,16 +1,18 @@
 <template>
   <div>
-    <div v-if="data">
-      <h2>
-        Агенства
-      </h2>
-      <Agencies
-        :data="data"
-      />
-    </div>
-    <div v-else>
-      Подождите...
-    </div>
+    <v-container style="max-width: 1500px !important; margin-top: 40px;">
+      <div v-if="data">
+        <h2>
+          Агенства
+        </h2>
+        <Agencies
+          :data="data"
+        />
+      </div>
+      <div v-else>
+        Подождите...
+      </div>
+    </v-container>
   </div>
 </template>
 <script lang="ts">
