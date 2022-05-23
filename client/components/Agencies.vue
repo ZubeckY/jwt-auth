@@ -19,7 +19,7 @@ export default class Agencies extends Vue {
     { text: 'Id', value: '_id' },
     { text: 'Название организации', value: 'name'},
     { text: 'ФИО Директора', value: 'director'},
-    { text: 'Телефон ррганизации', value: 'phone'},
+    { text: 'Телефон организации', value: 'phone'},
     { text: 'E-mail', value: 'email'},
     { text: 'Комментарий', value: 'comment'},
     { text: 'Контактное лицо', value: 'contactname'},
