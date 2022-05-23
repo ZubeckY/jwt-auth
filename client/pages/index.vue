@@ -1,13 +1,11 @@
 <template>
   <div>
-    <div v-if="data == ''">
-      <v-btn @click="getUsers"> Получить Всех Пользователей </v-btn>
-    </div>
-    <div v-else v-for="el in data">
-      <div>id : {{el._id}}</div>
-      <div>Login : {{el.login}}</div>
-      <div>Data : {{el.createdAt}}</div>
-    </div>
+    <h2>
+      Агенства
+    </h2>
+    <Agencies
+      :data="data"
+    />
   </div>
 </template>
 <script lang="ts">
@@ -18,13 +16,15 @@ export default class Index extends Vue {
 
   created () {
     if (!this.$restAuthData?.accessToken) {
-      console.log(this.$restAuthData)
       this.$router.push('/auth-login')
+    } else {
+      this.getUsers ()
     }
   }
 
-  getUsers () {
-    this.$rest.users.list()
+  async getUsers () {
+    let data = await this.$rest.users.list()
+    this.data = data
   }
 }
 </script>
