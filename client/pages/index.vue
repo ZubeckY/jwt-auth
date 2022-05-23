@@ -1,11 +1,16 @@
 <template>
   <div>
-    <h2>
-      Агенства
-    </h2>
-    <Agencies
-      :data="data"
-    />
+    <div v-if="data">
+      <h2>
+        Агенства
+      </h2>
+      <Agencies
+        :data="data"
+      />
+    </div>
+    <div v-else>
+      Подождите...
+    </div>
   </div>
 </template>
 <script lang="ts">

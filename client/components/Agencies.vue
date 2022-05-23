@@ -27,7 +27,6 @@ export default class Agencies extends Vue {
     { text: 'Дата создания', value: 'createdAt'},
   ]
 
-
 }
 </script>
 
