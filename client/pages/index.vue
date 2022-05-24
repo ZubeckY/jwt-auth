@@ -31,17 +31,21 @@
                     <v-divider></v-divider>
                     <v-card-actions>
                       <v-spacer></v-spacer>
-                      <v-btn text>
-                       Проверить
-                      </v-btn>
+                      <div v-if="!result">
+                        <v-btn text @click="result=!result">
+                          Проверить
+                        </v-btn>
+                      </div>
+                      <div v-else>
+                        <p><strong>Если контакт не найден:</strong> «Клиента в базе нет, авторизуйтесь или зарегистрируйтесь, чтобы закрепить за собой».</p>
+                        <p><strong>Если контакт найден и свободный:</strong>«Клиент в базе есть, но свободный. Авторизуйтесь или зарегистрируйтесь, чтобы закрепить за собой».</p>
+                        <p><strong>Если контакт найден и занят:</strong>«Клиент найден в базе! Для того, чтобы сделка с данным клиентом была ваша, требуется прийти вместе с ним на сделку!»</p>
+                      </div>
                     </v-card-actions>
                   </v-card>
                 </v-dialog>
               </div>
             </template>
-          </v-col>
-          <v-col class="col-auto">
-            <v-btn href>Добавить агенство</v-btn>
           </v-col>
         </v-row>
         <Agencies :data="data"/>
@@ -56,6 +60,7 @@ import {Component, Vue, Watch} from "vue-property-decorator"
 export default class Index extends Vue {
   private data:any = ''
   private dialog:boolean = false
+  private result:boolean = false
 
   created () {
     if (!this.$restAuthData?.accessToken) {
