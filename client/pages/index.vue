@@ -23,7 +23,7 @@
                   </template>
                   <v-card>
                     <v-card-title class="text-h5 lighten-2">
-                    Проверить контакт
+                      Проверить контакт
                     </v-card-title>
                     <v-card-text>
                       <v-text-field/>
@@ -39,7 +39,6 @@
                 </v-dialog>
               </div>
             </template>
-
           </v-col>
           <v-col class="col-auto">
             <v-btn href>Добавить агенство</v-btn>
@@ -56,7 +55,7 @@ import {Component, Vue, Watch} from "vue-property-decorator"
 @Component
 export default class Index extends Vue {
   private data:any = ''
-  private dialog:boolean=false
+  private dialog:boolean = false
 
   created () {
     if (!this.$restAuthData?.accessToken) {
