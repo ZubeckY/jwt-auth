@@ -21,7 +21,7 @@
                       Проверить контакт
                     </v-btn>
                   </template>
-                  <v-card>
+                  <v-card light>
                     <v-card-title class="text-h5 lighten-2">
                       Проверить контакт
                     </v-card-title>
